@@ -13,7 +13,7 @@ class Stock extends Model
     protected $table = 'stock';
 
     protected $casts = [
-        'in_stock' => 'boolean'
+        'in_stock' => 'boolean',
     ];
 
     public function track()
@@ -23,7 +23,7 @@ class Stock extends Model
 
             $this->update([
                 'in_stock' => $results['available'],
-                'price' => $results['price']
+                'price'    => $results['price'],
             ]);
         }
     }
