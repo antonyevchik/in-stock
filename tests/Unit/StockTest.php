@@ -3,11 +3,11 @@
 namespace Tests\Unit;
 
 use App\Clients\ClientException;
-use App\Clients\ClientFactory;
 use App\Clients\StockStatus;
 use App\Models\Retailer;
 use App\Models\Stock;
 use Database\Seeders\RetailerWithProductSeeder;
+use Facades\App\Clients\ClientFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -28,7 +28,7 @@ class StockTest extends TestCase
 
     }
 
-    /**@test*/
+    /** @test */
     public function it_updates_local_stock_status_after_being_tracked()
     {
         $this->seed(RetailerWithProductSeeder::class);
