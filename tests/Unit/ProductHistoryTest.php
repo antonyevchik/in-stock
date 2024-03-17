@@ -2,13 +2,11 @@
 
 namespace Tests\Unit;
 
-use Facades\App\Clients\ClientFactory;
 use App\Clients\StockStatus;
-use App\Models\History;
 use App\Models\Product;
 use Database\Seeders\RetailerWithProductSeeder;
+use Facades\App\Clients\ClientFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class ProductHistoryTest extends TestCase
