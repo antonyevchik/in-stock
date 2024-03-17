@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/mail-preview', function () {
+    $user = \App\Models\User::factory()->create();
+
+    return (new \App\Notifications\ImportantStockUpdate(\App\Models\Stock::first()))->toMail($user);
 });
