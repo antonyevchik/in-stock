@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\UseCases\TrackStock;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
 {
