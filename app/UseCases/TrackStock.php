@@ -7,9 +7,12 @@ use App\Models\History;
 use App\Models\Stock;
 use App\Models\User;
 use App\Notifications\ImportantStockUpdate;
+use Illuminate\Foundation\Bus\Dispatchable;
 
 class TrackStock
 {
+    use Dispatchable;
+
     protected Stock $stock;
     protected StockStatus $status;
 
@@ -18,7 +21,6 @@ class TrackStock
     {
         $this->stock = $stock;
     }
-
 
     public function handle()
     {
@@ -38,7 +40,7 @@ class TrackStock
 
     protected function notifyUser()
     {
-        if(!$this->stock->in_stock && $this->status->available) {
+        if($this->isNowInStock()) {
             User::first()->notify(
                 new ImportantStockUpdate($this->stock)
             );
@@ -61,5 +63,10 @@ class TrackStock
             'product_id' => $this->stock->product->id,
             'stock_id'   => $this->stock->id
         ]);
+    }
+
+    public function isNowInStock(): bool
+    {
+        return !$this->stock->in_stock && $this->status->available;
     }
 }

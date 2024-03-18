@@ -18,7 +18,7 @@ class Stock extends Model
 
     public function track()
     {
-        (new TrackStock($this))->handle();
+        TrackStock::dispatch($this);
     }
 
     public function retailer()
