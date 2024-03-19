@@ -7,13 +7,13 @@ use Illuminate\Console\Command;
 
 class TrackCommand extends Command
 {
-    protected $signature = 'track';
+    protected $signature   = 'track';
     protected $description = 'Track all product stock';
 
     public function handle()
     {
         Product::all()
-            ->tap(fn($products) => $this->output->progressStart($products->count()))
+            ->tap(fn ($products) => $this->output->progressStart($products->count()))
             ->each(function ($product) {
                 $product->track();
                 $this->output->progressAdvance();

@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\Product;
 use Database\Seeders\RetailerWithProductSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class TrackCommandTest extends TestCase
