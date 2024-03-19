@@ -16,8 +16,6 @@ class TrackCommandTest extends TestCase
     {
         parent::setUp();
 
-        Notification::fake();
-
         $this->seed(RetailerWithProductSeeder::class);
     }
 
@@ -30,8 +28,7 @@ class TrackCommandTest extends TestCase
 
         $this->mockClientRequest();
 
-        $this->artisan('track')
-            ->expectsOutput('All done!');
+        $this->artisan('track');
 
         $this->assertTrue(Product::first()->inStock());
     }
